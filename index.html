@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landvision | Excelencia en Óptica Humana y Profesional</title>
+    <!-- Tailwind CSS por CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <!-- Lucide Icons para los iconos de React nativos en HTML -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            red: '#E53E3E',     // El color del corazón de Landvision
+                            redHover: '#C53030',
+                            rose: '#FFF5F5',     // Fondos cálidos
+                            cream: '#FCFAF7',    // Fondo orgánico premium
+                            dark: '#0F172A',     // Elegancia y contraste profesional
+                            slate: '#475569',
+                            gold: '#D97706'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        serif: ['"Playfair Display"', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #FCFAF7;
+        }
+        .transition-all-300 {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        /* Máscara de desvanecimiento para el carrusel de municipalidades */
+        .infinite-scroll-container {
+            mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+            -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+        }
+    </style>
+</head>
+<body class="text-brand-dark overflow-x-hidden antialiased">
+
+    <!-- BARRA DE NOTIFICACIÓN DE CAMPAÑAS -->
+    <div class="bg-brand-red text-white py-2 px-4 text-center text-xs md:text-sm font-semibold tracking-wide relative z-50">
+        <div class="flex items-center justify-center gap-2">
+            <span class="flex h-2 w-2 relative">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-2 w-2 bg-white"></span>
+            </span>
+            <span>📍 PRÓXIMA CAMPAÑA GRATUITA: Valle Sagrado (Calca y Urubamba) este fin de semana. ¡Cuidemos tu visión!</span>
+        </div>
+    </div>
+
+    <!-- NAVBAR CLARO CON LOGO OFICIAL (image_82b7a8.png) -->
+    <nav class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-orange-100 shadow-sm transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <a href="#inicio" class="flex items-center gap-3 group">
+                    <div class="relative flex items-center justify-center bg-white p-1 rounded-xl shadow-sm border border-orange-100">
+                        <img src="image_82b7a8.png" alt="Logo Landvision" class="h-12 w-auto transition-transform duration-300 group-hover:scale-105" />
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="text-xl font-extrabold tracking-tight text-brand-dark leading-none group-hover:text-brand-red transition-colors">LANDVISION</span>
+                        <span class="text-[10px] uppercase tracking-[0.25em] text-brand-slate font-semibold">Salud Visual Humana</span>
+                    </div>
+                </a>
+
+                <div class="hidden md:flex items-center gap-6">
+                    <a href="#nosotros" class="text-sm font-semibold text-brand-slate hover:text-brand-red transition-all-300">Quiénes Somos</a>
+                    <a href="#servicios" class="text-sm font-semibold text-brand-slate hover:text-brand-red transition-all-300">Servicios</a>
+                    <a href="#estilos" class="text-sm font-semibold text-brand-slate hover:text-brand-red transition-all-300">Colecciones</a>
+                    <a href="#catalogo" class="text-sm font-semibold text-brand-slate hover:text-brand-red transition-all-300">Modelos</a>
+                    <a href="#probador" class="text-sm font-bold text-white bg-brand-red hover:bg-brand-redHover px-4 py-2 rounded-full transition-all flex items-center gap-1.5 shadow-md"><i data-lucide="camera" class="w-4 h-4"></i>Probador Virtual</a>
+                </div>
+
+                <div class="hidden lg:flex items-center gap-4">
+                    <a href="#agendar" class="bg-brand-dark hover:bg-brand-dark/90 text-white text-sm font-bold px-5 py-3 rounded-full shadow-md transition-all-300 hover:shadow-lg flex items-center gap-2">
+                        <i data-lucide="calendar" class="w-4 h-4 text-brand-red"></i>
+                        Agendar Examen
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION PREMIUM CON LA FOTO DE LUCY (image_8243c9.jpg) -->
+    <header id="inicio" class="relative overflow-hidden pt-12 pb-24 md:py-28 bg-gradient-to-br from-brand-rose via-brand-cream to-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <div class="lg:col-span-7 space-y-8 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 bg-white px-4 py-2 rounded-full border border-orange-100 shadow-sm">
+                        <span class="text-xs font-bold text-brand-dark tracking-wide uppercase">Cusco · Juliaca · Tacna</span>
+                    </div>
+
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-brand-dark leading-[1.1]">
+                        Pruébate tus lentes sin salir de <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-red to-orange-500 font-serif italic">casa u oficina</span>
+                    </h1>
+
+                    <p class="text-lg md:text-xl text-brand-slate leading-relaxed max-w-2xl mx-auto lg:mx-0">
+                        Bienvenido a la nueva era de **Landvision**. Ahora puedes usar nuestra cámara inteligente para descubrir qué montura se adapta a tu fisonomía antes de visitarnos en la tienda en Cusco.
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+                        <a href="#probador" class="w-full sm:w-auto bg-brand-red hover:bg-brand-redHover text-white font-bold px-8 py-4 rounded-full shadow-lg transition-all-300 text-center flex items-center justify-center gap-2">
+                            <i data-lucide="camera" class="w-5 h-5"></i> Activar Probador Virtual
+                        </a>
+                        <a href="#catalogo" class="w-full sm:w-auto bg-white hover:bg-brand-rose text-brand-dark font-bold px-8 py-4 rounded-full shadow-md hover:shadow-lg border border-orange-100 transition-all-300 text-center flex items-center justify-center gap-2">
+                            <i data-lucide="glasses" class="w-5 h-5 text-brand-red"></i> Ver Modelos Reales
+                        </a>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-5 relative">
+                    <div class="relative bg-white p-4 rounded-3xl shadow-2xl border border-orange-100/50 max-w-md mx-auto transform hover:rotate-1 transition-transform duration-500">
+                        <div class="relative rounded-2xl overflow-hidden group">
+                            <img src="image_8243c9.jpg" alt="Lucy Landeo adaptando lentes a paciente" class="w-full h-[400px] object-cover rounded-2xl" />
+                            <div class="absolute inset-0 bg-gradient-to-t from-brand-dark/80 via-brand-dark/20 to-transparent flex flex-col justify-end p-6">
+                                <div class="bg-brand-red/90 text-white text-xs font-bold px-3 py-1.5 rounded-full w-max mb-2">Asesoría Personalizada Cusco</div>
+                                <h3 class="text-white text-lg font-bold">"Cada rostro es único, diseñamos tu estilo a medida."</h3>
+                                <p class="text-gray-200 text-xs mt-1">Av. Collasuyo A-13, Cusco (Frente al Real Plaza).</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </header>
+
+    <!-- PROBADOR VIRTUAL INTERACTIVO -->
+    <section id="probador" class="py-20 bg-white border-b border-orange-100">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6">
+            <div class="bg-brand-cream rounded-3xl border border-orange-100 p-6 md:p-8 shadow-2xl grid grid-cols-1 lg:grid-cols-12 gap-8 relative overflow-hidden">
+                
+                <div class="lg:col-span-8 flex flex-col items-center justify-center space-y-4">
+                    <div class="w-full max-w-xl aspect-square bg-slate-900 rounded-3xl relative overflow-hidden flex flex-col items-center justify-center border-4 border-white shadow-inner">
+                        <img id="tryon-portrait" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=600" class="absolute inset-0 w-full h-full object-cover block" alt="Modelo probador">
+
+                        <!-- ALERTA DE ERROR DE ACCESO A CÁMARA (IDÉNTICA A TU CAPTURA DE OPTIMANIA) -->
+                        <div id="tryon-camera-denied" class="absolute inset-0 bg-brand-dark/90 backdrop-blur-sm hidden flex-col items-center justify-center p-8 text-center space-y-4 z-20">
+                            <div class="w-16 h-16 bg-red-100 text-brand-red rounded-full flex items-center justify-center animate-bounce">
+                                <i data-lucide="camera-off" class="w-8 h-8"></i>
+                            </div>
+                            <h4 class="text-white text-xl font-bold">¡Acceso a cámara denegado!</h4>
+                            <div class="border border-red-500 rounded-full px-4 py-1 text-xs text-brand-red bg-red-500/10 inline-block">
+                                Camera access denied!
+                            </div>
+                            <p class="text-gray-300 text-xs max-w-xs leading-relaxed">
+                                No te preocupes. Puedes elegir uno de los rostros de referencia a la derecha o subir tu propia foto para simular las monturas.
+                            </p>
+                        </div>
+
+                        <!-- OVERLAY DINÁMICO DE LOS LENTES -->
+                        <div id="tryon-glasses-container" class="absolute z-10" style="top: 40%; left: 50%; transform: translate(-50%, -50%) scale(1.1) rotate(0deg);">
+                            <div id="tryon-glasses-svg" class="w-48 filter drop-shadow-md">
+                                <svg viewBox="0 0 200 80" fill="none"><rect x="15" y="20" width="65" height="40" rx="12" stroke="#E53E3E" stroke-width="6.5" fill="none"/><rect x="120" y="20" width="65" height="40" rx="12" stroke="#E53E3E" stroke-width="6.5" fill="none"/><path d="M80 35C90 30 110 30 120 35" stroke="#E53E3E" stroke-width="6.5"/><path d="M15 30H5" stroke="#E53E3E" stroke-width="4.5"/><path d="M185 30H195" stroke="#E53E3E" stroke-width="4.5"/></svg>
+                            </div>
+                        </div>
+
+                        <div class="absolute bottom-4 left-4 bg-white/90 backdrop-blur-md px-3 py-1.5 rounded-full border border-orange-100 z-10 flex items-center gap-1.5 shadow-md">
+                            <span class="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></span>
+                            <span class="text-[10px] font-bold text-brand-dark" id="tryon-badge-text">Modelo: Montura Altiplano Pro</span>
+                        </div>
+                    </div>
+
+                    <!-- CONTROLADORES DESLIZANTES -->
+                    <div class="w-full max-w-xl bg-white p-4 rounded-2xl border border-orange-100 grid grid-cols-1 md:grid-cols-3 gap-4 text-xs font-semibold">
+                        <div class="space-y-1.5">
+                            <span class="text-brand-slate">Tamaño Lentes:</span>
+                            <input type="range" id="slider-scale" min="0.6" max="2.2" step="0.05" value="1.1" oninput="updateTryon()" class="w-full accent-brand-red">
+                        </div>
+                        <div class="space-y-1.5">
+                            <span class="text-brand-slate">Posición Y:</span>
+                            <input type="range" id="slider-y" min="10" max="90" step="1" value="40" oninput="updateTryon()" class="w-full accent-brand-red">
+                        </div>
+                        <div class="space-y-1.5">
+                            <span class="text-brand-slate">Inclinación:</span>
+                            <input type="range" id="slider-rotate" min="-20" max="20" step="1" value="0" oninput="updateTryon()" class="w-full accent-brand-red">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-4 flex flex-col justify-between space-y-6">
+                    <div class="space-y-4">
+                        <h3 class="text-lg font-bold text-brand-dark">Configura tu Probador</h3>
+                        <div class="grid grid-cols-2 gap-2">
+                            <button onclick="triggerCameraError()" class="bg-white hover:bg-brand-rose border border-orange-100 hover:border-brand-red font-bold text-xs py-3 rounded-xl flex items-center justify-center gap-1.5 transition-all shadow-sm">
+                                <i data-lucide="video" class="text-brand-red"></i> Usar Cámara
+                            </button>
+                            <label class="bg-white hover:bg-brand-rose border border-orange-100 hover:border-brand-red font-bold text-xs py-3 rounded-xl flex items-center justify-center gap-1.5 transition-all shadow-sm cursor-pointer text-center">
+                                <i data-lucide="upload-cloud" class="text-brand-red"></i> Subir Foto
+                                <input type="file" accept="image/*" class="hidden">
+                            </label>
+                        </div>
+
+                        <div class="space-y-2">
+                            <span class="text-[11px] font-bold text-brand-slate uppercase block">Rostros de Referencia:</span>
+                            <div class="grid grid-cols-3 gap-2">
+                                <button onclick="changeFace('woman')" class="border border-brand-red bg-brand-rose rounded-xl py-1.5 font-bold text-[10px] text-center">Mujer</button>
+                                <button onclick="changeFace('man')" class="border border-gray-200 hover:border-brand-red bg-white rounded-xl py-1.5 font-bold text-[10px] text-center">Varón</button>
+                                <button onclick="changeFace('child')" class="border border-gray-200 hover:border-brand-red bg-white rounded-xl py-1.5 font-bold text-[10px] text-center">Niño</button>
+                            </div>
+                        </div>
+
+                        <div class="space-y-2 pt-2 border-t border-orange-100">
+                            <span class="text-[11px] font-bold text-brand-slate uppercase block">Selecciona la Montura:</span>
+                            <div class="space-y-2 max-h-56 overflow-y-auto pr-2" id="tryon-picker">
+                                <!-- Cargado por JS -->
+                            </div>
+                        </div>
+                    </div>
+                    <button onclick="openModalFromTryon()" class="w-full bg-brand-red hover:bg-brand-redHover text-white font-bold py-3 rounded-xl text-xs flex items-center justify-center gap-1.5 shadow-md">
+                        <i data-lucide="message-circle"></i> Personalizar lunas y cotizar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CARRUSEL DE ALIANZAS MUNICIPALES -->
+    <section id="alianzas" class="py-12 bg-white border-b border-orange-100 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 text-center mb-6">
+            <span class="text-xs uppercase tracking-[0.2em] text-brand-slate font-extrabold">Alianzas Institucionales · Confían en nosotros</span>
+        </div>
+        <div class="relative w-full overflow-hidden py-2">
+            <div class="flex justify-around items-center gap-8 text-xs font-bold text-brand-slate flex-wrap">
+                <div class="bg-brand-cream py-2 px-5 rounded-2xl border border-orange-100 shadow-sm flex items-center gap-2"><span>Muni. Calca</span></div>
+                <div class="bg-brand-cream py-2 px-5 rounded-2xl border border-orange-100 shadow-sm flex items-center gap-2"><span>Muni. Urubamba</span></div>
+                <div class="bg-brand-cream py-2 px-5 rounded-2xl border border-orange-100 shadow-sm flex items-center gap-2"><span>Muni. Ollantaytambo</span></div>
+                <div class="bg-brand-cream py-2 px-5 rounded-2xl border border-orange-100 shadow-sm flex items-center gap-2"><span>Gob. Reg. Apurímac</span></div>
+                <div class="bg-brand-cream py-2 px-5 rounded-2xl border border-orange-100 shadow-sm flex items-center gap-2"><span>Muni. Cusco</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN ENCUENTRA TU ESTILO (GRID DE CATEGORÍAS) -->
+    <section id="estilos" class="py-20 bg-brand-cream">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center space-y-4 mb-14">
+                <span class="text-xs uppercase tracking-[0.25em] text-brand-red font-extrabold">Colecciones</span>
+                <h2 class="text-3xl md:text-5xl font-black text-brand-dark tracking-tight">Encuentra tu estilo</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <div class="group relative rounded-[32px] overflow-hidden bg-zinc-800 h-[380px] shadow-lg">
+                    <div class="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/40 to-transparent z-10"></div>
+                    <div class="absolute bottom-0 inset-x-0 p-6 text-center space-y-3 z-20">
+                        <h3 class="text-xl font-bold text-white">NIÑOS</h3>
+                        <a href="#catalogo" onclick="filterCategory('niños')" class="w-full bg-brand-red hover:bg-brand-redHover text-white text-xs font-bold py-3 rounded-full flex items-center justify-center gap-2">Ver colección <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+                    </div>
+                </div>
+                <div class="group relative rounded-[32px] overflow-hidden bg-zinc-700 h-[380px] shadow-lg">
+                    <div class="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/40 to-transparent z-10"></div>
+                    <div class="absolute bottom-0 inset-x-0 p-6 text-center space-y-3 z-20">
+                        <h3 class="text-xl font-bold text-white">HOMBRES</h3>
+                        <a href="#catalogo" onclick="filterCategory('hombres')" class="w-full bg-brand-red hover:bg-brand-redHover text-white text-xs font-bold py-3 rounded-full flex items-center justify-center gap-2">Ver colección <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+                    </div>
+                </div>
+                <div class="group relative rounded-[32px] overflow-hidden bg-zinc-600 h-[380px] shadow-lg">
+                    <div class="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/40 to-transparent z-10"></div>
+                    <div class="absolute bottom-0 inset-x-0 p-6 text-center space-y-3 z-20">
+                        <h3 class="text-xl font-bold text-white">MUJERES</h3>
+                        <a href="#catalogo" onclick="filterCategory('mujeres')" class="w-full bg-brand-red hover:bg-brand-redHover text-white text-xs font-bold py-3 rounded-full flex items-center justify-center gap-2">Ver colección <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN RIGOR CLÍNICO (AUTOREFRACTÓMETRO KR-8900) -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-6">
+                    <div class="bg-brand-cream p-4 rounded-3xl border border-orange-100 shadow-2xl max-w-lg mx-auto relative">
+                        <img src="image_8315df.jpg" alt="Lucy Landeo con refractómetro KR-8900" class="w-full h-[450px] object-cover rounded-2xl" />
+                        <div class="absolute -bottom-5 -left-5 bg-white p-4 rounded-2xl shadow-xl border border-orange-100 flex items-center gap-2">
+                            <i data-lucide="activity" class="text-brand-red"></i>
+                            <div>
+                                <p class="text-sm font-extrabold text-brand-dark">Autorefractómetro KR-8900</p>
+                                <p class="text-xs text-brand-slate">Precisión computarizada de vanguardia</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lg:col-span-6 space-y-6">
+                    <span class="inline-flex items-center gap-1.5 bg-brand-rose px-3 py-1.5 rounded-full text-brand-red text-xs font-bold uppercase">Rigor Clínico Certificado</span>
+                    <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight text-brand-dark">Diagnóstico visual transparente, <span class="text-brand-red font-serif italic">sin adivinanzas</span></h2>
+                    <p class="text-brand-slate leading-relaxed">En el sector de la salud visual abunda el empirismo y la falta de ética. En **Landvision** respaldamos nuestra experiencia de más de 12 años con equipamiento médico certificado. Realizamos descartes computarizados claros, didácticos y honestos.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- IMPACTO SOCIAL Y HISTORIA DE LUCY LANDEO -->
+    <section id="nosotros" class="py-20 bg-brand-dark text-white relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-7 space-y-6">
+                    <span class="bg-red-950 px-3 py-1.5 rounded-full border border-brand-red/30 text-brand-red text-xs font-bold uppercase">Historia con Propósito</span>
+                    <h2 class="text-3xl md:text-5xl font-extrabold tracking-tight">De ver dificultades a fundar <span class="text-brand-red font-serif italic">Landvision</span></h2>
+                    <p class="text-gray-300 leading-relaxed">Nuestra fundadora, **Lucy Landeo**, presenció de primera mano situaciones de extrema dificultad en Huancavelica trabajando para el estado. Eso la impulsó a crear una óptica comprometida con llevar salud visual a quienes menos oportunidades tienen en zonas rurales alejadas.</p>
+                    <div class="bg-gray-800/40 p-5 rounded-2xl border border-gray-700/50 italic text-sm text-gray-200">"Lo importante es ver aquello que resulta invisible para los demás."</div>
+                </div>
+                <div class="lg:col-span-5">
+                    <div class="bg-gray-800 p-3 rounded-3xl border border-gray-700 max-w-md mx-auto">
+                        <img src="image_8246d1.jpg" alt="Lucy Landeo en campaña en Cusco" class="w-full h-[400px] object-cover rounded-2xl filter brightness-95" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FILTRO DE CATÁLOGO GENERAL -->
+    <section id="catalogo" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center space-y-4 mb-12">
+                <h2 class="text-3xl md:text-4xl font-extrabold text-brand-dark">Colección en Vitrina</h2>
+                <p class="text-brand-slate max-w-xl mx-auto text-sm">Explora las monturas en tendencia y cotiza de forma directa.</p>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8" id="catalog-grid">
+                <!-- Cargado dinámicamente por JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- VENTANA EMERGENTE (MODAL) DE PERSONALIZACIÓN -->
+    <div id="product-modal" class="fixed inset-0 bg-brand-dark/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-white rounded-3xl max-w-2xl w-full p-6 md:p-8 shadow-2xl relative">
+            <button onclick="closeModal()" class="absolute top-4 right-4 p-2 bg-gray-100 hover:bg-gray-200 rounded-full text-brand-dark"><i data-lucide="x"></i></button>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-brand-cream rounded-2xl p-6 border border-orange-100 flex items-center justify-center h-60">
+                    <div id="modal-svg-container" class="w-full text-brand-dark"></div>
+                </div>
+                <div class="space-y-6">
+                    <div>
+                        <h3 class="text-2xl font-extrabold text-brand-dark" id="modal-title">Montura</h3>
+                        <span class="text-xs text-brand-slate block mt-1 uppercase font-bold text-brand-red" id="modal-material">Acetato</span>
+                    </div>
+                    <div class="space-y-3">
+                        <span class="text-sm font-bold text-brand-dark block">Elige el tipo de luna para tu medida:</span>
+                        <select id="lens-select" onchange="updatePrice()" class="w-full px-4 py-2.5 rounded-xl border border-gray-200 bg-white text-sm">
+                            <option value="0">Resina Antireflex Básica (S/ 0.00)</option>
+                            <option value="50">Filtro Blue Protect (+S/ 50.00)</option>
+                            <option value="100">Fotocromáticos / Transition (+S/ 100.00)</option>
+                        </select>
+                    </div>
+                    <div class="bg-brand-rose p-4 rounded-2xl border border-brand-red/10 flex items-center justify-between">
+                        <span class="text-xs text-brand-slate font-bold block">Total Estimado:</span>
+                        <span class="text-2xl font-black text-brand-red" id="modal-total-price">S/ 0.00</span>
+                    </div>
+                    <a id="modal-whatsapp-btn" href="#" target="_blank" class="w-full bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-4 rounded-xl text-center flex items-center justify-center gap-2"><i data-lucide="message-circle"></i> Cotizar todo por WhatsApp</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="bg-brand-dark text-white pt-16 pb-8 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center sm:text-left">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+                <div class="space-y-4">
+                    <img src="image_82b7a8.png" alt="Logo Landvision" class="h-14 w-auto mx-auto sm:mx-0 bg-white p-1.5 rounded-xl" />
+                    <p class="text-sm text-gray-400">Óptica de Cusco con un fuerte enfoque social y clínico.</p>
+                </div>
+                <div class="space-y-4">
+                    <h4 class="font-bold text-sm uppercase tracking-wider text-brand-red">Contacto</h4>
+                    <span class="text-sm text-gray-400 block">Av. Collasuyo A-13, Cusco</span>
+                    <span class="text-sm text-gray-400 block">WhatsApp: 978 510 800</span>
+                </div>
+                <div class="space-y-4">
+                    <h4 class="font-bold text-sm uppercase tracking-wider text-brand-red">Personal</h4>
+                    <button class="bg-gray-800 hover:bg-gray-700 text-white font-bold text-xs px-4 py-2 rounded-xl transition flex items-center gap-1.5 border border-gray-700 mx-auto sm:mx-0"><i data-lucide="lock" class="w-4 h-4 text-brand-red"></i> Acceso Lucy</button>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- LÓGICA DE SIMULACIÓN INTERACTIVA -->
+    <script>
+        const FRAMES_DATA = [
+            { id: "1", title: "Montura Altiplano Pro", category: "hombres", material: "Acetato Premium", price: 149.00, desc: "Diseño rectangular robusto y formal, ideal para rostros ovalados y redondos.", svgType: "rectangular" },
+            { id: "2", title: "Andina Oval Light", category: "mujeres", material: "TR90 Flexible", price: 159.00, desc: "Montura redondeada ultra-lisa en tonos pastel, ideal para rostros cuadrados.", svgType: "ovalado" },
+            { id: "3", title: "Cusco Ray Sol", category: "sol", material: "Metal & Acetato", price: 189.00, desc: "Lentes de sol con protección UV400 completa y lunas polarizadas.", svgType: "aviador" },
+            { id: "4", title: "Pumitas Flex", category: "niños", material: "TR90 Irrompible", price: 119.00, desc: "Diseñado especialmente para los más pequeños con bisagras 360°.", svgType: "cuadrado" }
+        ];
+
+        const SVGS = {
+            rectangular: `<svg viewBox="0 0 200 80" fill="none"><rect x="15" y="20" width="65" height="40" rx="12" stroke="#E53E3E" stroke-width="6.5" fill="none"/><rect x="120" y="20" width="65" height="40" rx="12" stroke="#E53E3E" stroke-width="6.5" fill="none"/><path d="M80 35C90 30 110 30 120 35" stroke="#E53E3E" stroke-width="6.5"/><path d="M15 30H5" stroke="#E53E3E" stroke-width="4.5"/><path d="M185 30H195" stroke="#E53E3E" stroke-width="4.5"/></svg>`,
+            ovalado: `<svg viewBox="0 0 200 80" fill="none"><rect x="15" y="15" width="65" height="50" rx="25" stroke="#E53E3E" stroke-width="6.5" fill="none"/><rect x="120" y="15" width="65" height="50" rx="25" stroke="#E53E3E" stroke-width="6.5" fill="none"/><path d="M80 35C90 30 110 30 120 35" stroke="#E53E3E" stroke-width="6.5"/></svg>`,
+            cuadrado: `<svg viewBox="0 0 200 80" fill="none"><rect x="20" y="15" width="55" height="50" rx="8" stroke="#E53E3E" stroke-width="6.5" fill="none"/><rect x="125" y="15" width="55" height="50" rx="8" stroke="#E53E3E" stroke-width="6.5" fill="none"/><path d="M75 35C85 30 115 30 125 35" stroke="#E53E3E" stroke-width="6.5"/></svg>`,
+            aviador: `<svg viewBox="0 0 200 80" fill="none"><path d="M20 20C40 20 75 25 75 45C75 60 55 65 35 65C15 65 15 45 20 20Z" stroke="#E53E3E" stroke-width="6.5" fill="none"/><path d="M180 20C160 20 125 25 125 45C125 60 145 65 165 65C185 65 185 45 180 20Z" stroke="#E53E3E" stroke-width="6.5" fill="none"/><path d="M75 30C85 25 115 25 125 30" stroke="#E53E3E" stroke-width="6.5"/><path d="M74 40C85 37 115 37 126 40" stroke="#E53E3E" stroke-width="4.5"/></svg>`
+        };
+
+        let selectedFrame = FRAMES_DATA[0];
+        let currentCategory = 'todos';
+
+        function renderCatalog() {
+            const grid = document.getElementById('catalog-grid');
+            grid.innerHTML = '';
+            const filtered = currentCategory === 'todos' ? FRAMES_DATA : FRAMES_DATA.filter(f => f.category === currentCategory);
+            
+            filtered.forEach(f => {
+                grid.innerHTML += `
+                    <div class="bg-brand-cream border border-orange-100 rounded-3xl p-6 shadow-sm flex flex-col justify-between">
+                        <div class="space-y-4">
+                            <div class="bg-white rounded-2xl h-44 flex items-center justify-center p-4 border border-orange-100/50">${SVGS[f.svgType]}</div>
+                            <h3 class="text-lg font-bold text-brand-dark">${f.title}</h3>
+                            <p class="text-xs text-brand-slate leading-relaxed">${f.desc}</p>
+                        </div>
+                        <div class="mt-6 pt-4 border-t border-gray-100 flex items-center justify-between">
+                            <span class="text-lg font-extrabold text-brand-dark">S/ ${f.price.toFixed(2)}</span>
+                            <button onclick="openModal('${f.id}')" class="bg-brand-red hover:bg-brand-redHover text-white text-xs font-bold px-4 py-2.5 rounded-full flex items-center gap-1"><i data-lucide="message-circle" class="w-4 h-4"></i> Cotizar</button>
+                        </div>
+                    </div>`;
+            });
+            lucide.createIcons();
+        }
+
+        function renderTryonPicker() {
+            const container = document.getElementById('tryon-picker');
+            container.innerHTML = '';
+            FRAMES_DATA.forEach(f => {
+                container.innerHTML += `
+                    <button onclick="selectTryon('${f.id}')" class="w-full text-left p-2.5 rounded-xl border bg-white flex justify-between text-xs border-orange-100">
+                        <span class="font-bold">${f.title}</span>
+                        <span class="text-brand-red font-bold">S/ ${f.price.toFixed(2)}</span>
+                    </button>`;
+            });
+        }
+
+        function selectTryon(id) {
+            const frame = FRAMES_DATA.find(f => f.id === id);
+            if(frame) {
+                selectedFrame = frame;
+                document.getElementById('tryon-badge-text').innerText = `Modelo: ${frame.title}`;
+                document.getElementById('tryon-frame-price').innerText = `S/ ${frame.price.toFixed(2)}`;
+                document.getElementById('tryon-glasses-svg').innerHTML = SVGS[frame.svgType];
+            }
+        }
+
+        function updateTryon() {
+            const scale = document.getElementById('slider-scale').value;
+            const y = document.getElementById('slider-y').value;
+            const rotate = document.getElementById('slider-rotate').value;
+            const container = document.getElementById('tryon-glasses-container');
+            container.style.top = `${y}%`;
+            container.style.transform = `translate(-50%, -50%) scale(${scale}) rotate(${rotate}deg)`;
+        }
+
+        function triggerCameraError() {
+            document.getElementById('tryon-camera-denied').classList.remove('hidden');
+        }
+
+        function changeFace(type) {
+            document.getElementById('tryon-camera-denied').classList.add('hidden');
+            const faces = {
+                woman: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=600",
+                man: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=600",
+                child: "https://images.unsplash.com/photo-1503919545889-aef636e10ad4?auto=format&fit=crop&q=80&w=600"
+            };
+            document.getElementById('tryon-portrait').src = faces[type];
+        }
+
+        function filterCategory(cat) {
+            currentCategory = cat;
+            renderCatalog();
+        }
+
+        function openModal(id) {
+            const frame = FRAMES_DATA.find(f => f.id === id);
+            if(!frame) return;
+            selectedFrame = frame;
+            document.getElementById('modal-title').innerText = frame.title;
+            document.getElementById('modal-material').innerText = frame.material;
+            document.getElementById('modal-svg-container').innerHTML = SVGS[frame.svgType];
+            document.getElementById('lens-select').value = "0";
+            updatePrice();
+            document.getElementById('product-modal').classList.remove('hidden');
+        }
+
+        function openModalFromTryon() {
+            openModal(selectedFrame.id);
+        }
+
+        function closeModal() {
+            document.getElementById('product-modal').classList.add('hidden');
+        }
+
+        function updatePrice() {
+            const add = parseFloat(document.getElementById('lens-select').value);
+            const total = selectedFrame.price + add;
+            document.getElementById('modal-total-price').innerText = `S/ ${total.toFixed(2)}`;
+            
+            const msg = `Hola Landvision! Me encantó esta combinación en la web:\n\n*Montura:* ${selectedFrame.title}\n*Lunas:* ${add === 50 ? 'Blue Protect' : add === 100 ? 'Fotocromáticas' : 'Resina Básica'}\n*Total:* S/ ${total.toFixed(2)}`;
+            document.getElementById('modal-whatsapp-btn').href = "https://wa.me/51978510800?text=" + encodeURIComponent(msg);
+        }
+
+        window.onload = function() {
+            renderCatalog();
+            renderTryonPicker();
+            lucide.createIcons();
+        };
+    </script>
+</body>
+</html>
